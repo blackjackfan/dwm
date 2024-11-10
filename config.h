@@ -27,8 +27,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-//static const char *tags[] = { "Deus", "Vertias", "Pax", "Amor", "Libertas", "Sapientia", };
-static const char *tags[] = { "", "", "", "", "", "", };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -92,8 +91,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_o,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_p, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
