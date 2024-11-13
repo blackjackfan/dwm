@@ -254,6 +254,10 @@ static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void xrdb(const Arg *arg);
 static void zoom(const Arg *arg);
+// Patches Arrow Key //
+void viewnext(const Arg *arg);
+void viewprev(const Arg *arg);
+//
 
 /* variables */
 static const char broken[] = "broken";
@@ -2348,6 +2352,34 @@ zoom(const Arg *arg)
 			return;
 	pop(c);
 }
+
+// Patches Arrow Key //
+
+void
+viewnext(const Arg *arg)
+{
+    unsigned int i;
+    for(i = 0; i < LENGTH(tags); i++) {
+        if(selmon->tagset[selmon->seltags] & (1 << i)) {
+            view(&(Arg){.ui = 1 << ((i + 1) % LENGTH(tags))});
+            return;
+        }
+    }
+}
+
+void
+viewprev(const Arg *arg)
+{
+    unsigned int i;
+    for(i = 0; i < LENGTH(tags); i++) {
+        if(selmon->tagset[selmon->seltags] & (1 << i)) {
+            view(&(Arg){.ui = 1 << ((i + LENGTH(tags) - 1) % LENGTH(tags))});
+            return;
+        }
+    }
+}
+
+//
 
 int
 main(int argc, char *argv[])

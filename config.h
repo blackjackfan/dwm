@@ -71,31 +71,35 @@ static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                	XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             			XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	/* { MODKEY,                       XK_space,  setlayout,      {0} }*/ 
-	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_o,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_p, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+	/* modifier                     key        		function        argument */
+	{ MODKEY,                       XK_space,  		spawn,          {.v = dmenucmd } },
+	{ MODKEY,	                	XK_Return, 		spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_b,      		togglebar,      {0} },
+	{ MODKEY,                       XK_j,      		focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      		focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      		incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,      		incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,      		setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,      		setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_Return, 		zoom,           {0} },
+	{ MODKEY,                       XK_Tab,    		view,           {0} },
+	{ MODKEY,             			XK_q,      		killclient,     {0} },
+	{ MODKEY,                       XK_t,      		setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,      		setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      		setlayout,      {.v = &layouts[2]} },
+	/* { MODKEY,                    XK_space,  		setlayout,      {0} }*/ 
+	{ MODKEY|ShiftMask,             XK_f,      		togglefloating, {0} },
+	{ MODKEY,                       XK_0,      		view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      		tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_o,  	   		focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_p, 	   		focusmon,       {.i = +1 } },
+	{ MODKEY,             			XK_semicolon,   tagmon,         {.i = -1 } },
+	{ MODKEY,             			XK_colon,       tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_q,      		quit,           {0} },
+	{ MODKEY,                       XK_F5,     		xrdb,           {.v = NULL } },
+/* Remplacer les keybinds problématiques par: */
+{ MODKEY,                       XK_Right,    viewnext,       {0} },
+{ MODKEY,                       XK_Left,     viewprev,       {0} },
     TAGKEYS(                        XK_ampersand,              0)
     TAGKEYS(                        XK_eacute,                 1)
     TAGKEYS(                        XK_quotedbl,               2)
@@ -105,7 +109,6 @@ static Key keys[] = {
     TAGKEYS(                        XK_egrave,                 6)
     TAGKEYS(                        XK_underscore,             7)
     TAGKEYS(                        XK_ccedilla,               8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */
